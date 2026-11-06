@@ -2,7 +2,7 @@
 
 A website that helps developers choose their first certifications, with a guide page for each one and an AI assistant powered by Google Gemini. University team project at UNIESP, where I was the **project leader** of a team of 6.
 
-**Live site:** coming soon
+**Live site:** https://cert-dev.vercel.app/
 
 ![CertDev home page](docs/screenshots/home.jpg)
 
@@ -75,7 +75,3 @@ The site is ready for [Vercel](https://vercel.com): it finds the `app` in `app.p
 - **Gustavo de Oliveira Marques, content developer:** content structure and page texts.
 
 Academic project for the Computer Science course at UNIESP, under the guidance of Professor Messias (2025).
-
----
-
-**Versão em português:** guia de certificações para desenvolvedores, feito em equipe na UNIESP. Tem uma página para cada certificação (AWS Cloud Practitioner, Google Analytics e PCEP) e um assistente com a API do Gemini. Fui o líder do projeto, numa equipe de 6 pessoas. Stack: Python, Flask, Bootstrap e Gemini API.
