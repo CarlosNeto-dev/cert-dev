@@ -1,16 +1,17 @@
-# Ignorar arquivos do PyCharm e IDEs da JetBrains
-.idea/
+# Segredos: a chave do Gemini nunca vai para o GitHub
+.env
 
-# Ignorar o ambiente virtual Python
+# Ambiente virtual e caches do Python
 venv/
 .venv/
-
-# Ignorar caches e compilações Python
 __pycache__/
 *.pyc
+.pytest_cache/
 
-# Ignorar arquivos de metadados do macOS
+# Vercel
+.vercel/
+
+# Editores e sistema
+.idea/
+.vscode/
 .DS_Store
-
-# Chaves secretas
-dev_certifications_project/.env

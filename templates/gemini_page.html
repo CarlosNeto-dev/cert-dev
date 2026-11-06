@@ -24,7 +24,8 @@
                                   id="user-prompt" 
                                   name="question"
                                   rows="4" 
-                                  placeholder="Como a certificação AWS Cloud Practitioner pode impulsionar minha carreira?"></textarea>
+                                  maxlength="1000"
+                                  placeholder="Como a certificação AWS Cloud Practitioner pode impulsionar minha carreira?">{{ question }}</textarea>
                     </div>
                     <div class="d-grid gap-2">
                         <button id="send-button" class="btn btn-primary btn-lg" type="submit">
@@ -41,10 +42,11 @@
                 <h5 class="card-title text-primary mb-3">Resposta do Gemini:</h5>
                 {% if gemini_response %}
                     <div class="gemini-response-content">
+                        {# o HTML já chega convertido e sanitizado pelo app.py (render_markdown) #}
                         {{ gemini_response | safe }}
                     </div>
-                {% elif comunication_error %}
-                    <p class="text-danger">Erro: {{ comunication_error }}</p>
+                {% elif error_message %}
+                    <p class="text-danger">{{ error_message }}</p>
                 {% else %}
                     <p class="text-muted">Aguardando sua pergunta...</p>
                 {% endif %}
@@ -79,7 +81,7 @@
                 });
             }
 
-            {% if gemini_response or comunication_error %}
+            {% if gemini_response or error_message %}
                 if (responseArea) {
                     responseArea.classList.remove('is-loading');
                 }
@@ -87,24 +89,5 @@
             
         });
         
-        {% if gemini_response %}
-            function renderMarkdown() {
-                const responseDiv = document.querySelector('.gemini-response-content');
-                if (responseDiv && responseDiv.innerText.trim() !== '') {
-                    let markdownText = responseDiv.innerText.trim();
-                    markdownText = markdownText.replace(/(\n\s*){3,}/g, '\n\n'); 
-
-                    const converter = new showdown.Converter();
-                    converter.setOption('simpleLineBreaks', true);
-                    converter.setOption('tables', true);
-                    converter.setOption('tablesHeaderId', true);
-
-                    const html = converter.makeHtml(markdownText);
-
-                    responseDiv.innerHTML = html;
-                }
-            }
-            window.addEventListener('DOMContentLoaded', renderMarkdown);
-        {% endif %}
     </script>
 {% endblock %}
